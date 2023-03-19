@@ -1,6 +1,11 @@
-# absorb
+# ABSORB
 
-A [reagent](https://github.com/reagent-project/reagent) application designed to ... well, that part is up to you.
+A clojurescript game.
+
+### Status
+- Board renders and you can click to toggle showing a game piece.
+- No game logic yet.
+- Unit tests are not implemented, but the framework is in place.
 
 ## Development Mode
 
@@ -28,10 +33,10 @@ Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
 
 ```
 lein clean
-lein doo phantom test once
+lein doo chrome test once
 ```
 
-The above command assumes that you have [phantomjs](https://www.npmjs.com/package/phantomjs) installed. However, please note that [doo](https://github.com/bensu/doo) can be configured to run cljs.test in many other JS environments (chrome, ie, safari, opera, slimer, node, rhino, or nashorn). 
+The above command assumes that you have [karma](https://www.npmjs.com/package/karma) installed. However, please note that [doo](https://github.com/bensu/doo) can be configured to run cljs.test in many other JS environments (phantom, ie, safari, opera, slimer, node, rhino, or nashorn). 
 
 ## Production Build
 
@@ -39,3 +44,8 @@ The above command assumes that you have [phantomjs](https://www.npmjs.com/packag
 lein clean
 lein cljsbuild once min
 ```
+
+## Design
+
+A [reagent](https://github.com/reagent-project/reagent) single page application.
+

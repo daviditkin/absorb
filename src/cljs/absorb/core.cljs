@@ -1,8 +1,7 @@
 (ns absorb.core
   (:require
+    [reagent.dom :as dom]
    [reagent.core :as reagent]
-   [reagent.dom :as dom]
-   [reagent.dom.server :as doms]
    ))
 
 (defn game-piece []

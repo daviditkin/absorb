@@ -2,8 +2,8 @@
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/clojurescript "1.10.742"]
                  [reagent "1.2.0"]
-                 [reagent.dom "1.2.0"]
-                 [reagent.dom.client "1.2.0"]
+                 [cljsjs/react "17.0.2-0"]
+                 [cljsjs/react-dom "17.0.2-0"]
                  [javax.xml.bind/jaxb-api "2.3.1"]]
 
   :min-lein-version "2.5.3"
