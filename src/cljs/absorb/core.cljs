@@ -2,8 +2,17 @@
   (:require
    [reagent.core :as reagent]
    [reagent.dom :as dom]
+   [reagent.dom.server :as doms]
    ))
 
+(defn game-piece []
+  [:div {:class "game-piece"}])
+
+(defn square []
+  [:td {:class "square"}])
+
+(defn square-clicked [row col board selected-square]
+  (js/console.log "square clicked "))
 
 (defn game-board []
   (let [board (reagent/atom (vec (repeat 10 (vec (repeat 10 nil)))))
@@ -17,41 +26,33 @@
                           (reset! selected-square nil))))]
     (fn []
       [:div
-       [:h1 "My Game"]
+       [:h1 "Laser Absorb"]
        [:table
-        (for [row (range 10)]
+        (doall (for [row (range 10)]
           [:tbody {:key row}
            [:tr {:key row}
-            (for [col (range 10)]
+            (doall (for [col (range 10)]
               (let [square (get-in @board [row col])
                     selected? (= [@selected-square] [row col])
-                    click-handler #(reset! selected-square [row col])]
+                    click-handler #(swap! board assoc-in [row col]
+                                          (if square nil [:div]))]
                 [:td {:key [row col] :class (str "square " (when selected? "selected"))
                       :onClick click-handler}
                  (when square
-                   [:div {:class "game-piece"} square])]))]])]])))
+                   [:div {:class "game-piece"} square])])))]]))]])))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Vars
 
 (defonce app-state
   (reagent/atom {:count 0}))
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Page
 
-(defn green-button [txt]
-  (let []
-    (fn [txt]
-      [:button.green txt])))
-
 (defn page [ratom]
   [:div
-   [green-button "Green Button"]
-   [:div "Hello, World!"]])
-
-
+   [game-board]])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Initialize App
